@@ -9,12 +9,11 @@
     <title>NOXA | Descubre tu próxima compra</title>
 
     <meta name="description"
-        content="Descubre productos seleccionados por su diseño, calidad y estilo. Compra fácil y rápida con NOXA.">
+        content="Descubre productos con estilo, calidad y buen precio. Compra fácil por WhatsApp.">
 
     <link rel="stylesheet" href="css/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
@@ -35,7 +34,7 @@
     <nav>
 
         <a href="#inicio">Inicio</a>
-        <a href="#productos">Colección</a>
+        <a href="#productos">Producto</a>
         <a href="#nosotros">Nosotros</a>
         <a href="#contacto">Contacto</a>
 
@@ -54,23 +53,21 @@
         <h1>
 
             DESCUBRE<br>
-
             TU PRÓXIMA<br>
-
             COMPRA.
 
         </h1>
 
         <p>
 
-            Productos seleccionados por su diseño, calidad y estilo.
-            Explora nuestra colección y encuentra tu próximo favorito.
+            Productos seleccionados por su diseño, calidad y buen precio.
+            Compra de forma rápida, segura y con atención personalizada.
 
         </p>
 
         <a href="#productos" class="btn">
 
-            EXPLORAR COLECCIÓN
+            EXPLORAR PRODUCTO
 
         </a>
 
@@ -78,22 +75,16 @@
 
 </section>
 
-<!-- PRODUCTOS -->
+<!-- PRODUCTO -->
 
 <section class="productos" id="productos">
 
     <div class="titulo">
 
-        <h2>
-
-            NUESTRA COLECCIÓN
-
-        </h2>
+        <h2>NUESTRO PRODUCTO</h2>
 
         <p>
-
-            Descubre los productos más populares de NOXA.
-
+            Calidad, diseño y excelente precio.
         </p>
 
     </div>
@@ -108,31 +99,11 @@
 
             <span>$89.900</span>
 
-            <button>Comprar por WhatsApp</button>
+            <button onclick="comprarWhatsApp()">
 
-        </div>
+                Comprar por WhatsApp
 
-        <div class="card">
-
-            <img src="img/bass.jpg" alt="NOXA BASS">
-
-            <h3>NOXA BASS</h3>
-
-            <span>$129.900</span>
-
-            <button>Comprar por WhatsApp</button>
-
-        </div>
-
-        <div class="card">
-
-            <img src="img/pro.jpg" alt="NOXA PRO">
-
-            <h3>NOXA PRO</h3>
-
-            <span>$169.900</span>
-
-            <button>Comprar por WhatsApp</button>
+            </button>
 
         </div>
 
@@ -144,18 +115,13 @@
 
 <section class="nosotros" id="nosotros">
 
-    <h2>
-
-        MÁS QUE UNA TIENDA
-
-    </h2>
+    <h2>MÁS QUE UNA TIENDA</h2>
 
     <p>
 
-        En NOXA creemos que comprar debe ser una experiencia sencilla,
-        rápida y confiable. Seleccionamos productos con excelente calidad,
-        diseño moderno y precios justos para que siempre encuentres algo
-        que realmente valga la pena.
+        En NOXA queremos ofrecer productos que realmente valgan la pena.
+        Nos enfocamos en calidad, diseño y una atención rápida para que
+        comprar sea fácil, segura y sin complicaciones.
 
     </p>
 
@@ -165,31 +131,36 @@
 
 <section class="contacto" id="contacto">
 
-    <h2>
-
-        ¿LISTO PARA PEDIR?
-
-    </h2>
+    <h2>¿LISTO PARA COMPRAR?</h2>
 
     <p>
 
         Escríbenos por WhatsApp y recibe atención personalizada.
+        Resolveremos tus dudas y te ayudaremos con tu pedido.
 
     </p>
 
-    <a href="https://wa.me/573115255712" target="_blank" class="btn">
+    <a href="javascript:comprarWhatsApp()" class="btn">
 
-        HABLAR POR WHATSAPP
+        COMPRAR AHORA
 
     </a>
 
 </section>
 
+<!-- FOOTER -->
+
 <footer>
+
+    <div class="footer-logo">
+
+        <img src="img/logo.png" alt="NOXA">
+
+    </div>
 
     <p>
 
-        © 2026 NOXA · Todos los derechos reservados.
+        © 2026 NOXA. Todos los derechos reservados.
 
     </p>
 
@@ -198,3 +169,5 @@
 <script src="js/app.js"></script>
 
 </body>
+
+</html>

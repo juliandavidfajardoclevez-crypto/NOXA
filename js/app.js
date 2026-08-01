@@ -1,35 +1,30 @@
-/* ==========================================
-   NOXA | APP.JS
-========================================== */
+/* =====================================
+   NOXA | app.js
+===================================== */
 
-const numero = "573115255712";
+const numero = "573160598636";
 
-/*=============================
-  Comprar por WhatsApp
-==============================*/
+/*==========================
+COMPRAR POR WHATSAPP
+==========================*/
 
-const botones = document.querySelectorAll(".card button");
+function comprarWhatsApp() {
 
-botones.forEach((boton)=>{
+    const producto = "NOXA AIR";
+    const precio = "$89.900";
 
-    boton.addEventListener("click",()=>{
+    const mensaje =
+`👋 ¡Hola NOXA!
 
-        const card = boton.parentElement;
+Estoy interesado en este producto.
 
-        const producto = card.querySelector("h3").textContent;
-
-        const precio = card.querySelector("p").textContent;
-
-        const mensaje =
-`👋 Hola NOXA.
-
-Quiero comprar este producto.
-
-🎧 Producto: ${producto}
+📦 Producto: ${producto}
 
 💰 Precio: ${precio}
 
-Mi nombre es:
+¿Está disponible?
+
+Mi nombre:
 
 Ciudad:
 
@@ -37,73 +32,99 @@ Dirección:
 
 Muchas gracias.`;
 
-        const url =
-`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
 
-        window.open(url,"_blank");
-
-    });
-
-});
-
-
-/*=============================
- Animación al hacer scroll
-==============================*/
-
-const elementos = document.querySelectorAll(".card,.hero-info,.hero-image,.nosotros,.contacto");
-
-const observer = new IntersectionObserver((entries)=>{
-
-entries.forEach((entry)=>{
-
-if(entry.isIntersecting){
-
-entry.target.style.opacity="1";
-entry.target.style.transform="translateY(0)";
+    window.open(url, "_blank");
 
 }
 
+/*==========================
+BOTÓN FLOTANTE WHATSAPP
+==========================*/
+
+const boton = document.createElement("a");
+
+boton.href = `https://wa.me/${numero}`;
+
+boton.target = "_blank";
+
+boton.innerHTML = "💬";
+
+boton.className = "floating-whatsapp";
+
+document.body.appendChild(boton);
+
+/*==========================
+AÑO AUTOMÁTICO
+==========================*/
+
+const footer = document.querySelector("footer p");
+
+if (footer) {
+
+    footer.innerHTML = `© ${new Date().getFullYear()} NOXA. Todos los derechos reservados.`;
+
+}
+
+/*==========================
+ANIMACIÓN AL HACER SCROLL
+==========================*/
+
+const elementos = document.querySelectorAll(
+    ".hero-content, .card, .nosotros, .contacto"
+);
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+
+        }
+
+    });
+
+}, {
+
+    threshold: 0.2
+
 });
 
-},{
-threshold:.15
-});
+elementos.forEach((elemento) => {
 
-elementos.forEach((el)=>{
+    elemento.style.opacity = "0";
 
-el.style.opacity="0";
+    elemento.style.transform = "translateY(40px)";
 
-el.style.transform="translateY(40px)";
+    elemento.style.transition = ".8s ease";
 
-el.style.transition=".7s";
-
-observer.observe(el);
+    observer.observe(elemento);
 
 });
 
+/*==========================
+HEADER AL HACER SCROLL
+==========================*/
 
-/*=============================
- Botón flotante WhatsApp
-==============================*/
+const header = document.querySelector("header");
 
-const whatsapp = document.createElement("a");
+window.addEventListener("scroll", () => {
 
-whatsapp.href="https://wa.me/"+numero;
+    if (window.scrollY > 60) {
 
-whatsapp.target="_blank";
+        header.style.background = "#111";
 
-whatsapp.innerHTML="💬";
+        header.style.boxShadow = "0 5px 20px rgba(0,0,0,.25)";
 
-whatsapp.className="floating-whatsapp";
+    } else {
 
-document.body.appendChild(whatsapp);
+        header.style.background = "rgba(0,0,0,.45)";
 
+        header.style.boxShadow = "none";
 
-/*=============================
- Año automático
-==============================*/
+    }
 
-const footer=document.querySelector("footer p");
-
-footer.innerHTML=`© ${new Date().getFullYear()} NOXA. Todos los derechos reservados.`;
+});
