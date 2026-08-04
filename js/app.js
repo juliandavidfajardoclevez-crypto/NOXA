@@ -1,78 +1,82 @@
-/* =====================================
-   NOXA | app.js
-===================================== */
+/*=========================================
+            NOXA - app.js
+=========================================*/
 
-const numero = "573160598636";
+// Número de WhatsApp
+const numeroWhatsApp = "573115255712";
 
-/*==========================
-COMPRAR POR WHATSAPP
-==========================*/
+/*=========================================
+        MENSAJE GENERAL
+=========================================*/
 
-function comprarWhatsApp() {
-
-    const producto = "NOXA AIR";
-    const precio = "$89.900";
+function abrirWhatsApp(producto, precio) {
 
     const mensaje =
 `👋 ¡Hola NOXA!
 
-Estoy interesado en este producto.
+Estoy interesado en:
 
-📦 Producto: ${producto}
+👕 Producto: ${producto}
 
 💰 Precio: ${precio}
 
-¿Está disponible?
+📏 Talla: M o L
 
-Mi nombre:
+¿Está disponible?`;
 
-Ciudad:
-
-Dirección:
-
-Muchas gracias.`;
-
-    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
 
     window.open(url, "_blank");
 
 }
 
-/*==========================
-BOTÓN FLOTANTE WHATSAPP
-==========================*/
+/*=========================================
+      BOTONES DE LOS PRODUCTOS
+=========================================*/
 
-const boton = document.createElement("a");
+document.querySelectorAll(".card").forEach((card) => {
 
-boton.href = `https://wa.me/${numero}`;
+    const boton = card.querySelector("button");
 
-boton.target = "_blank";
+    const producto = card.querySelector("h3").textContent;
 
-boton.innerHTML = "💬";
+    const precio = card.querySelector("span").textContent;
 
-boton.className = "floating-whatsapp";
+    boton.addEventListener("click", () => {
 
-document.body.appendChild(boton);
+        abrirWhatsApp(producto, precio);
 
-/*==========================
-AÑO AUTOMÁTICO
-==========================*/
+    });
 
-const footer = document.querySelector("footer p");
+});
 
-if (footer) {
+/*=========================================
+          HEADER AL HACER SCROLL
+=========================================*/
 
-    footer.innerHTML = `© ${new Date().getFullYear()} NOXA. Todos los derechos reservados.`;
+const header = document.querySelector("header");
 
-}
+window.addEventListener("scroll", () => {
 
-/*==========================
-ANIMACIÓN AL HACER SCROLL
-==========================*/
+    if (window.scrollY > 50) {
 
-const elementos = document.querySelectorAll(
-    ".hero-content, .card, .nosotros, .contacto"
-);
+        header.style.background = "#0d0d0d";
+        header.style.boxShadow = "0 10px 25px rgba(0,0,0,.25)";
+
+    } else {
+
+        header.style.background = "rgba(0,0,0,.45)";
+        header.style.boxShadow = "none";
+
+    }
+
+});
+
+/*=========================================
+      ANIMACIONES AL HACER SCROLL
+=========================================*/
+
+const elementos = document.querySelectorAll(".card,.titulo,.nosotros,.contacto");
 
 const observer = new IntersectionObserver((entries) => {
 
@@ -89,42 +93,44 @@ const observer = new IntersectionObserver((entries) => {
 
 }, {
 
-    threshold: 0.2
+    threshold: .2
 
 });
 
 elementos.forEach((elemento) => {
 
     elemento.style.opacity = "0";
-
     elemento.style.transform = "translateY(40px)";
-
-    elemento.style.transition = ".8s ease";
+    elemento.style.transition = ".7s ease";
 
     observer.observe(elemento);
 
 });
 
-/*==========================
-HEADER AL HACER SCROLL
-==========================*/
+/*=========================================
+      BOTÓN FLOTANTE WHATSAPP
+=========================================*/
 
-const header = document.querySelector("header");
+const whatsapp = document.createElement("a");
 
-window.addEventListener("scroll", () => {
+whatsapp.href = `https://wa.me/${numeroWhatsApp}`;
 
-    if (window.scrollY > 60) {
+whatsapp.target = "_blank";
 
-        header.style.background = "#111";
+whatsapp.innerHTML = "💬";
 
-        header.style.boxShadow = "0 5px 20px rgba(0,0,0,.25)";
+whatsapp.className = "floating-whatsapp";
 
-    } else {
+document.body.appendChild(whatsapp);
 
-        header.style.background = "rgba(0,0,0,.45)";
+/*=========================================
+      AÑO AUTOMÁTICO
+=========================================*/
 
-        header.style.boxShadow = "none";
+const footer = document.querySelector("footer p");
 
-    }
+if (footer) {
 
-});
+    footer.innerHTML = `© ${new Date().getFullYear()} NOXA · Todos los derechos reservados.`;
+
+}
